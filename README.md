@@ -17,4 +17,4 @@ At the moment it's an artful minimalist website that follows the great tradition
 ### Portfolio
 - Mockups
 - Algorithms
-- Knowedge of developer processes 
+- Knowledge of developer processes 
