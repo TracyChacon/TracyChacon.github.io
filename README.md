@@ -13,6 +13,7 @@ At the moment it's an artful minimalist website that follows the great tradition
 - SQL
 - Mongo DB
 - Git/GitHub
+- Markdown
 
 ### Portfolio
 - Mockups
