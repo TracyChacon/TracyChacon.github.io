@@ -1,1 +1,1 @@
-# (https://TracyChacon.github.io)
+# [Tracy Chacon's resume website](https://TracyChacon.github.io)
