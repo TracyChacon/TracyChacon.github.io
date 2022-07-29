@@ -1,6 +1,6 @@
 # [Tracy Chacon's resume website](https://TracyChacon.github.io)
 
-## It's a work in progress
+## About this site: It's a work in progress
 At the moment it's an artful minimalist website that follows the great tradition of "Hello world!", later I'll be using React for this github site. So stayed tuned all you recruiters, this work in progress will only get better.
 
 ## What my resume site will showcase
@@ -17,4 +17,12 @@ At the moment it's an artful minimalist website that follows the great tradition
 ### Portfolio
 - Mockups
 - Algorithms
-- Knowledge of developer processes 
+- Display knowledge of developer processes 
+
+## Why should you hire me?
+I am a dedicated problem solver who loves to learn. I'm expanding my knowledge daily. I can also work with others or on my own if needed. Communication is a must. I would enjoy being on your team and integrating the work into my path.
+
+### My path
+- FrontEnd to Full Stack Engineer (FSE)
+- FSE to Mobile Dev on two platforms
+- Mobile Dev to Data Scientist
