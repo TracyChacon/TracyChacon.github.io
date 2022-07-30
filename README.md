@@ -21,7 +21,7 @@ At the moment it's an artful minimalist website that follows the great tradition
 - Display knowledge of developer processes 
 
 ## Why should you hire me?
-I am a dedicated problem solver who loves to learn. I'm expanding my knowledge daily. I can also work with others or on my own if needed. Communication is a must. I would enjoy being on your team and integrating the work into my path.
+I am a dedicated problem solver who loves to learn. I'm expanding my knowledge daily. I can also work with others or on my own if needed. Communication is a must. I would enjoy helping on your team.
 
 ### My path
 - FrontEnd to Full Stack Engineer (FSE)
