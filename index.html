@@ -1,1 +1,92 @@
-<h1>Hello world!</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Site</title>
+    <link rel="stylesheet" href="./styles.css" />
+    
+  </head>
+  <body>
+    <nav>
+      <h2 id="logo">Tracy Chacon</h2>
+      <ul class="navigation-items">
+        <li class="navigation-item"><a href="#about-me">About Me</a></li>
+        <li class="navigation-item"><a href="#projects">Projects</a></li>
+        <li class="navigation-item"><a href="#skills">Skills</a></li>
+        <li class="navigation-item"><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="about-me">
+        <div class="about-me-container">
+          <div class="about-me-text-container">
+            <h2>About Me</h2>
+            <h3>Hello,</h3>
+            <p>
+               My name is Tracy and I'm a Front End Engineer who loves to code and solve problems.
+            </p>
+            <p>I'm practiced in React, Redux, JavaScript, CSS, HTML, Git, CLI and more. I'm fascinated by design, and math/physics simulations</p>
+            <p>I'm on a path that leads to Back End Engineering, Data Science, AI, and ML</p>
+         
+             <h4>Favorite Quote:</h4>
+             <q> You just keep pushing. You just keep pushing. 
+                I made every mistake that could be made. But I just kept pushing.
+            </q>
+            <cite>-René Descartes</cite>
+            </div>
+          <img
+            src="./Assets/images/portrait.png"
+            alt="A photo of Tracy Chacon"
+            class="portrait"
+          />
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Projects</h2>
+        <details class="project">
+          <summary class="project-title">
+            <h3>Markov Chains</h3>
+          </summary>
+          <figure>
+            <img
+            src="./Assets/images/120px-Markovkate_01.svg.png"
+            class="project-image"
+          />
+          <figcaption>
+            <cite>
+                By Joxemai4 - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=10284158
+            </cite>
+          </figcaption>
+          </figure>
+          
+          <p class="project-description">
+            Python program that gives the probability of ending at asorbing states of markov chains.
+          </p>
+        </details>
+        
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div id="skills-container">
+          <i class="fab fa-html5"></i>
+          <i class="fab fa-css3-alt"></i>
+          <i class="fab fa-js"></i>
+          <i class="fab fa-react"></i>
+          <i class="fab fa-git"></i>
+          <i class="fab fa-chrome"></i>
+          <i class="fas fa-terminal"></i>
+          <i class="fab fa-github"></i>
+          <i class="fab fa-python"></i>
+        </div>
+      </section>
+    </main>
+
+    <footer>Made with <span class="heart">♥</span></footer>
+    <script src="https://kit.fontawesome.com/807b59c62d.js" crossorigin="anonymous"></script>
+  </body>
+  <script src="index.js"></script>
+</html>
