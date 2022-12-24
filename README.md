@@ -1,21 +1,10 @@
 # [Tracy Chacon's resume website (Click Here)](https://TracyChacon.github.io)
 
-## About this site: It's a work in progress
-At the moment it's an artful minimalist website that follows the great tradition of "Hello world!", later I'll be using React for this github site. So stay tuned all you recruiters, this work in progress will only get better.
+## About this site: It's a work in progress with more projects to come.
 
 ## What my resume site will showcase
-### Techonologies/Languages 
-- HTML
-- CSS
-- JavaScript
-- React
-- Node
-- SQL
-- Mongo DB
-- Git/GitHub
-- Markdown
 
-### Portfolio
+### Portfolio items to add:
 - Mockups
 - Algorithms
 - Display knowledge of developer processes 
