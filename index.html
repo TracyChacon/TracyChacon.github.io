@@ -1,92 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio Site</title>
-    <link rel="stylesheet" href="./styles.css" />
-    
+  <meta charset="UTF-8">
+  <link type="text/css" rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+
+<script src="./assets/libs/d3.v7.js"></script>
   </head>
   <body>
-    <nav>
-      <h2 id="logo">Tracy Chacon</h2>
-      <ul class="navigation-items">
-        <li class="navigation-item"><a href="#about-me">About Me</a></li>
-        <li class="navigation-item"><a href="#projects">Projects</a></li>
-        <li class="navigation-item"><a href="#skills">Skills</a></li>
-        <li class="navigation-item"><a href="/contact.html">Contact</a></li>
-      </ul>
-    </nav>
+    <header>
+      
+      <div class="author-portrait">
+        <img src="" alt="round portrait of the websites author" />
+        <h6>Tracy Chacon</h6>
+      </div>
 
-    <main>
-      <section id="about-me">
-        <div class="about-me-container">
-          <div class="about-me-text-container">
-            <h2>About Me</h2>
-            <h3>Hello,</h3>
-            <p>
-               My name is Tracy and I'm a Front End Engineer who loves to code and solve problems.
-            </p>
-            <p>I'm practiced in React, Redux, JavaScript, CSS, HTML, Git, CLI and more. I'm fascinated by design, and math/physics simulations</p>
-            <p>I'm on a path that leads to Back End Engineering, Data Science, AI, and ML</p>
-         
-             <h4>Favorite Quote:</h4>
-             <q> You just keep pushing. You just keep pushing. 
-                I made every mistake that could be made. But I just kept pushing.
-            </q>
-            <cite>-René Descartes</cite>
-            </div>
-          <img
-            src="./assets/images/portrait.png"
-            alt="A photo of Tracy Chacon"
-            class="portrait"
-          />
-        </div>
-      </section>
+      <div class="contact-links">
+        <a href="">
+          <img src="" alt="linkedin icon link tracy chacons page"/>
+        </a>
+        <a href="">
+          <img src="" alt="website icon link" />
+        </a>
+        <a href="">
+          <img src="" alt="github icon link to tracy chacons github page" />
+        </a>
+      </div>
 
-      <section id="projects">
-        <h2>Projects</h2>
-        <details class="project">
-          <summary id="project-markov-chains" class="project-title">
-            <h3>Markov Chains</h3>
-          </summary>
-          <figure>
-            <img
-            src="./assets/images/120px-Markovkate_01.svg.png"
-            class="project-image"
-          />
-          <figcaption>
-            <cite>
-                By Joxemai4 - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=10284158
-            </cite>
-          </figcaption>
-          </figure>
-          
-          <p class="project-description">
-            Python program that gives the probability of ending at asorbing states of markov chains.
-          </p>
-        </details>
+    </header>
+
+    
+    <section id="projects">
+      <div class="container projects_icon-list">
+          <img 
+          src="./assets/images/algo_icon.svg" 
+          alt="algorithms icon" 
+          width="85" 
+          height="85"
+          class="icon-algo"
+          >
+      </div>
+      
+
+      <div class="flexbox1 container project_palindrome">
         
-      </section>
-
-      <section id="skills">
-        <h2>Skills</h2>
-        <div id="skills-container">
-          <i class="fab fa-html5"></i>
-          <i class="fab fa-css3-alt"></i>
-          <i class="fab fa-js"></i>
-          <i class="fab fa-react"></i>
-          <i class="fab fa-git"></i>
-          <i class="fab fa-chrome"></i>
-          <i class="fas fa-terminal"></i>
-          <i class="fab fa-github"></i>
-          <i class="fab fa-python"></i>
+        <div class="left-flex">
+          <small class="strapline">Algorithms</small>
+          <h2>Is it a Palindrome?</h2>
+          <div class="categories">
+            <p class="category">HTML</p>
+            <p class="category">CSS</p>
+            <p class="category">JavaScript</p>
+            <p class="category">Algorithms</p>
+            <p class="category">Responsive</p>
+          </div>
+          <p>
+            A palindrome is a word or sentence that’s spelled the same way both forward and backward, ignoring punctuation, case, and spacing.
+          </p>
         </div>
-      </section>
-    </main>
+        
+        <div class="right-flex">
+          <button id="check-btn" type="submit">Check</button>
+          <input id="text-input" placeholder="Enter a word or phrase"/>
+          <div id="result"></div>
+        </div>
+      </div>
 
-    <footer>Made with <span class="heart">♥</span></footer>
-    <script src="https://kit.fontawesome.com/807b59c62d.js" crossorigin="anonymous"></script>
+  
+      <div class="flexbox1 container project_datavisualization-barchart">
+        
+        <div class="left-flex">
+          <small class="strapline">Data Visualization</small>
+          <h2>Bar Charts</h2>
+          <div class="categories">
+            <p class="category">HTML</p>
+            <p class="category">CSS</p>
+            <p class="category">JavaScript</p>
+            <p class="category">D3.js</p>
+            <p class="category">Responsive</p>
+          </div>
+          <p>
+            HTML, JavaScript, CSS, and the D3 svg-based visualization library.
+          </p>
+        </div>
+        
+        <div class="right-flex">
+          <svg width="400" height="200"></svg>
+        </div>
+
+      </div>
+  </section>
+  <script src="./script.js"></script>
+  <footer></footer>
   </body>
-  <script src="index.js"></script>
 </html>
