@@ -142,7 +142,7 @@
   
 } */
 /* tablets */
-@media (max-width: 979px) { 
+@media only screen and (max-width: 979px) { 
   
   .container {
     padding: 0 5vw 0;
@@ -154,7 +154,7 @@
     
   }  
 }
-@media (max-width: 797px) { 
+@media only screen and (max-width: 797px) { 
   
   
   
@@ -185,20 +185,20 @@
     width: 96%
   }
 }
-  @media (max-width: 470px) { 
+  @media only screen and (max-width: 470px) { 
     
     #text-input {
       width: 200px
     }
   }
-  @media (max-width: 420px) {
+  @media only screen and (max-width: 420px) {
     
     #text-input {
       margin-left: 0px;
     }
 
   }
-  @media (max-width: 320px) {
+  @media only screen and (max-width: 320px) {
     body{ 
     background-color: purple;
     }
