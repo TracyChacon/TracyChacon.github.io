@@ -431,17 +431,19 @@ p {
 /* contact section **********************************************************************************/
 
 .contact__section--wrapper {
-  margin-top: 150px;
-  height: 50vh;
+  padding-top: 100px;
+  height: 75vh;
   overflow: hidden;
-  margin-bottom: 45px;
+ 
 }
 
 #contact {
-  margin-top: 180px;
+ 
   background-color: var(--contact-bg-color);
   color: var(--contact-fg-color);
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+
   
 }
 
@@ -487,7 +489,6 @@ p {
 /* footer **********************************************************************************/
 
 footer {
-  /* margin-top: -50vh; */
   background-color: var(--footer-bg-color);
   color: var(--footer-fg-color);
   height: 20vh;
@@ -496,45 +497,43 @@ footer {
 
 /* responsiveness **********************************************************************************/
 @media screen and (max-width: 2500px) {
-  header {
+  .--responsive {
     color: yellow;
   }
 }
   
 @media screen and (max-width: 1800px) {
-  header {
+  .--responsive {
     color: paleturquoise;
   }
 }
   
 @media screen and (max-width: 1580px) {
-  header {
-    color: violet;
+  .--responsive {
+    color: rgb(24, 2, 24);
   }
 }
 
 @media screen and (max-width: 1280px) {
-  header {
+  .--responsive {
     color: green;
   }
-
-  
 }
   
 @media screen and (max-width: 980px) {
-  header {
+  .--responsive {
     color: blue;
   }
 }
 
 @media screen and (max-width: 680px) {
-  header {
+  .--responsive {
     color: hotpink;
   }
 }
 
 @media screen and (max-width: 320px) {
-  header {
+  .--responsive {
     color: pink;
   }
 }
