@@ -1,3 +1,4 @@
 .docker
 .env
 ignore_this_file.md
+node_modules
