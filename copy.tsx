@@ -1,27 +1,47 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import fs from "fs";
+import path from "path";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
-export default function Home() {
+interface PostPageProps {
+  params: Promise<{ slug: string }>;
+}
+
+// 1. Tell Next.js exactly which post files to compile at build time
+export async function generateStaticParams() {
+  const postsDirectory = path.join(process.cwd(), "content/posts");
+  const filenames = fs.readdirSync(postsDirectory);
+
+  return filenames.map((filename) => ({
+    slug: filename.replace(".json", ""),
+  }));
+}
+
+// 2. Render the actual post layout
+export default async function BlogPost({ params }: PostPageProps) {
+  const { slug } = await params;
+  const filePath = path.join(process.cwd(), "content/posts", `${slug}.json`);
+
+  // Guard clause if the file doesn't exist
+  if (!fs.existsSync(filePath)) {
+    notFound();
+  }
+
+  const fileContents = fs.readFileSync(filePath, "utf8");
+  const post = JSON.parse(fileContents);
+
   return (
-   <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
-  {/* Traveling Gradient Container Wrapper */}
-  <div className="relative group p-[3px] rounded-full overflow-hidden w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-115 lg:h-115 shadow-2xl transition-transform duration-300 hover:scale-105">
-    
-    {/* The spinning background track creating the 'traveling' illusion */}
-    <div className="absolute inset-0 bg-[conic-gradient(from_0deg,transparent_40%,var(--color-indigo-500),var(--color-purple-500),var(--color-indigo-500))] animate-spin-slow group-hover:animation-duration-2s" />
-    
-    {/* Inner Mask Context separating the image from the track */}
-    <div className="relative w-full h-full rounded-full bg-white overflow-hidden p-1">
-      <Image 
-        src="/assets/images/linkedinProfilePhoto.jpg" 
-        alt="Tracy Chacon Profile Photo"
-        fill
-        priority
-        className="object-cover rounded-full p-1"
-      />
-    </div>
-  </div>
-</div>
-   
+    <article className="max-w-2xl mx-auto px-4 py-12">
+      <Link href="/blog" className="text-sm text-indigo-600 hover:underline mb-4 inline-block">
+        ← Back to all posts
+      </Link>
+      <header className="mb-8">
+        <span className="text-sm text-slate-500">{post.date}</span>
+        <h1 className="text-4xl font-bold text-slate-900 mt-2">{post.title}</h1>
+      </header>
+      <div className="text-slate-700 leading-relaxed text-lg whitespace-pre-line">
+        {post.content}
+      </div>
+    </article>
   );
 }
