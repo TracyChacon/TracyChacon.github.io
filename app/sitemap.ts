@@ -1,18 +1,21 @@
+// app/sitemap.ts
 import type { MetadataRoute } from 'next';
+
+// This directive forces Next.js to compile this cleanly during static exports
+export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://tracychacon.github.io';
 
-  // Array of your existing blog post slugs
+  // Your existing blog post slugs
   const blogPosts = [
-    'Breaking Things to Build Things: My Journey to Software QA & Development'
+    'breaking-things-to-build-things'
   ];
 
-  // Map individual posts to structured sitemap entries
   const blogUrls = blogPosts.map((slug) => ({
     url: `${baseUrl}/blog/${slug}`,
-    // YYYY-MM-DD format
-    lastModified: new Date().toISOString().split('T')[0], 
+    // Use a standard static date string instead of a dynamic constructor
+    lastModified: '2026-06-22', 
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
@@ -20,14 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: new Date().toISOString().split('T')[0],
+      lastModified: '2026-06-22',
       changeFrequency: 'weekly' as const,
-      // High structural priority for your main hub
-      priority: 1.0, 
+      priority: 1.0,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date().toISOString().split('T')[0],
+      lastModified: '2026-06-22',
       changeFrequency: 'daily' as const,
       priority: 0.8,
     },

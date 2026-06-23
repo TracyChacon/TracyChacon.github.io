@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Direct structural directive telling all AI and Search bots where the index graph lives
+Sitemap: https://tracychacon.github.io/sitemap.xml
