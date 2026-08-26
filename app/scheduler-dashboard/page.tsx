@@ -1,4 +1,3 @@
-// /app/scheduler-dashboard/page.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -111,13 +110,26 @@ const PROFESSION_PRESETS = {
 };
 
 export default function DashboardOverview() {
-  const [activeProfile, setActiveProfile] = useState<keyof typeof PROFESSION_PRESETS>("Mortgage Loan Officer");
+  const [activeProfile, setActiveProfile] = useState<keyof typeof PROFESSION_PRESETS | "Custom">("Mortgage Loan Officer");
   const [stages, setStages] = useState<Stage[]>(PROFESSION_PRESETS["Mortgage Loan Officer"].stages);
   const [clients, setClients] = useState<Client[]>(PROFESSION_PRESETS["Mortgage Loan Officer"].clients);
   const [isTeamMode, setIsTeamMode] = useState<boolean>(true);
   const [userRole, setUserRole] = useState<SecurityClearanceRole>('Mortgage Loan Officer');
   const [canDragAndDrop, setCanDragAndDrop] = useState<boolean>(true);
   const [onlyUpcomingMeetings, setOnlyUpcomingMeetings] = useState(false);
+
+  // 1. Keep Role Selector and Active Preset in sync
+  const handleRoleChange = (newRole: SecurityClearanceRole | 'admin') => {
+    setUserRole(newRole);
+    const matchingPresetKey = (Object.keys(PROFESSION_PRESETS) as Array<keyof typeof PROFESSION_PRESETS>).find(
+      (key) => PROFESSION_PRESETS[key].role === newRole
+    );
+    if (matchingPresetKey) {
+      setActiveProfile(matchingPresetKey);
+    } else {
+      setActiveProfile("Custom");
+    }
+  };
 
   const handleProfilePresetSwap = (profileKey: keyof typeof PROFESSION_PRESETS) => {
     setActiveProfile(profileKey);
@@ -137,10 +149,15 @@ export default function DashboardOverview() {
     ));
   };
 
+  // 2. Dynamic Metric Calculations derived from live state
+  const totalClientsCount = clients.length;
+  const pendingDocsCount = clients.filter(c => ['app', 'processing', 'docs_needed', 'setup'].includes(c.stage)).length;
+  const activeChannelsCount = stages.length;
+
   const pipelineMetrics = [
-    { label: 'Total Scheduled', value: '24', detail: 'This calendar month', color: 'text-emerald-400' },
-    { label: 'Pending Pre-Approvals', value: '7', detail: 'Requires document substantiation', color: 'text-blue-400' },
-    { label: 'Active Booking Forms', value: '3', detail: 'Live client channels', color: 'text-purple-400' },
+    { label: 'Active Pipeline Leads', value: String(totalClientsCount), detail: 'Live client records', color: 'text-emerald-400' },
+    { label: 'Pending Processing', value: String(pendingDocsCount), detail: 'Requires document substantiation', color: 'text-blue-400' },
+    { label: 'Configured Stages', value: String(activeChannelsCount), detail: 'Active pipeline columns', color: 'text-purple-400' },
   ];
 
   const meetingsData = [
@@ -186,7 +203,7 @@ export default function DashboardOverview() {
             </div>
             <div className="space-y-2">
               <label className="text-xs font-bold text-slate-500 uppercase tracking-wider block">Clearance Role</label>
-              <select value={userRole} onChange={(e) => setUserRole(e.target.value as SecurityClearanceRole)} className="w-[96%] h-12 bg-slate-950 border border-slate-700 rounded-lg text-xs font-bold p-2 text-slate-300 outline-none uppercase tracking-wide cursor-pointer focus:border-emerald-500">
+              <select value={userRole} onChange={(e) => handleRoleChange(e.target.value as SecurityClearanceRole | 'admin')} className="w-[96%] h-12 bg-slate-950 border border-slate-700 rounded-lg text-xs font-bold p-2 text-slate-300 outline-none uppercase tracking-wide cursor-pointer focus:border-emerald-500">
                 <option value="admin">Admin (Global Control)</option>
                 <option value="Mortgage Loan Officer">Mortgage Loan Officer</option>
                 <option value="Loan Officer Assistant">Loan Officer Assistant</option>
@@ -204,7 +221,7 @@ export default function DashboardOverview() {
             
         <div className="pt-2">
           <h1 className="text-3xl font-extrabold tracking-tight">Overview Dashboard</h1>
-          <p className="text-slate-400 font-medium mt-1">Currently rendering live presets for: <span className="text-emerald-400 ml-1 font-semibold">{PROFESSION_PRESETS[activeProfile].label}</span></p>
+          <p className="text-slate-400 font-medium mt-1">Currently rendering live presets for: <span className="text-emerald-400 ml-1 font-semibold">{activeProfile in PROFESSION_PRESETS ? PROFESSION_PRESETS[activeProfile as keyof typeof PROFESSION_PRESETS].label : "Custom Role Configuration"}</span></p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -229,36 +246,44 @@ export default function DashboardOverview() {
           </div>
 
           <div className="space-y-4">
-            {filteredMeetings.map((meeting) => (
-              <div key={meeting.id} className="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-slate-700 transition-colors">
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <p className="text-xs font-mono text-slate-500 uppercase tracking-wider">Meeting</p>
-                  </div>
-                  <div className="pl-4">
-                    <h4 className="text-lg font-bold text-slate-200">{meeting.client}</h4>
-                    <p className="text-xs text-emerald-400 font-mono mt-0.5">{meeting.type}</p>
-                    <p className="text-xs text-slate-400 mt-1">{meeting.time}</p>
-                  </div>
-                </div>
-                <div className="flex-1 bg-slate-900/50 border border-slate-800/60 rounded-xl p-4">
-                  <div className="text-right mb-2">
-                    <span className="text-[10px] font-bold tracking-widest text-emerald-500 uppercase">Pipeline Details</span>
-                  </div>
-                  <div className="bg-slate-950 rounded-lg border border-slate-800 px-4 py-3 flex items-center justify-between gap-4">
-                    <div>
-                      <p className="text-xs font-mono text-slate-500 uppercase tracking-wider">Pipeline Stage</p>
-                      <p className="text-sm font-bold text-slate-200 mt-0.5">{meeting.pipelineField}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-xs font-mono text-slate-500 uppercase tracking-wider">{isTeamMode ? "Assignee" : "Account Status"}</p>
-                      <p className="text-sm font-bold text-slate-200 mt-0.5">{isTeamMode ? "Tracy (MLO)" : "Primary Producer"}</p>
-                    </div>
-                  </div>
-                </div>
+            {/* 3. Empty State Fallback Feedback */}
+            {filteredMeetings.length === 0 ? (
+              <div className="bg-slate-950 border border-slate-800 rounded-xl p-8 text-center space-y-2">
+                <p className="text-sm font-semibold text-slate-400">No upcoming meetings match the current filter.</p>
+                <p className="text-xs text-slate-500">Toggle "Showing: All Scheduled Log Sessions" above to review historical meeting records.</p>
               </div>
-            ))}
+            ) : (
+              filteredMeetings.map((meeting) => (
+                <div key={meeting.id} className="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-slate-700 transition-colors">
+                  <div className="flex-1 space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                      <p className="text-xs font-mono text-slate-500 uppercase tracking-wider">Meeting</p>
+                    </div>
+                    <div className="pl-4">
+                      <h4 className="text-lg font-bold text-slate-200">{meeting.client}</h4>
+                      <p className="text-xs text-emerald-400 font-mono mt-0.5">{meeting.type}</p>
+                      <p className="text-xs text-slate-400 mt-1">{meeting.time}</p>
+                    </div>
+                  </div>
+                  <div className="flex-1 bg-slate-900/50 border border-slate-800/60 rounded-xl p-4">
+                    <div className="text-right mb-2">
+                      <span className="text-[10px] font-bold tracking-widest text-emerald-500 uppercase">Pipeline Details</span>
+                    </div>
+                    <div className="bg-slate-950 rounded-lg border border-slate-800 px-4 py-3 flex items-center justify-between gap-4">
+                      <div>
+                        <p className="text-xs font-mono text-slate-500 uppercase tracking-wider">Pipeline Stage</p>
+                        <p className="text-sm font-bold text-slate-200 mt-0.5">{meeting.pipelineField}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-xs font-mono text-slate-500 uppercase tracking-wider">{isTeamMode ? "Assignee" : "Account Status"}</p>
+                        <p className="text-sm font-bold text-slate-200 mt-0.5">{isTeamMode ? "Tracy (MLO)" : "Primary Producer"}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </div>
 

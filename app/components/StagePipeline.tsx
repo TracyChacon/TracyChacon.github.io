@@ -88,6 +88,8 @@ export default function StagePipeline({
         setIsMenuOpen(false);
     };
 
+    
+
     const initiateStageRemoval = (stageId: string) => {
         if (!isSystemAdmin) return;
         const defaultFallback = draftStages.find(stage => stage.id !== stageId)?.id || '';
