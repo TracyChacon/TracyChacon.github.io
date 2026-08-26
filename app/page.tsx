@@ -2,6 +2,39 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import ProjectCard, { ProjectCardProps } from "@/app/components/ProjectCard";
+
+const PROJECTS: ProjectCardProps[] = [
+  {
+    badge: "Local Sandbox UI",
+    title: "Project Dashboard Sandbox",
+    description:
+      "Interactive interface mockups for clearance scoping and workflow tracking. Switch permissions dynamically from standard Loan Officers down to Risk Agents.",
+    visualLabelLeft: "STAGES IN WORKFLOW",
+    visualLabelRight: "LEADS ROUTED",
+    visualCodeSnippet: "[Lead] → [App Check] → [Underwriting]",
+    visualStatusText: "Active Validation",
+    tags: ["Next.js 15", "Tailwind CSS v4", "HTML5 DnD"],
+    ctaLabel: "Launch UI Component Sandbox →",
+    ctaHref: "/scheduler-dashboard",
+    isExternal: false,
+  },
+  {
+    badge: "Live Microservice",
+    title: "Circto Scheduler Engine",
+    description:
+      "Production high-concurrency booking engine service powering task allocation and atomic database lock execution in real-time.",
+    visualLabelLeft: "CONCURRENCY LOCK",
+    visualLabelRight: "SERVICE STATUS",
+    visualCodeSnippet: "[Input] → [Atomic DB Lock] → [Commit]",
+    visualStatusText: "Live Service Online",
+    tags: ["Next.js App Router", "PostgreSQL", "Docker"],
+    ctaLabel: "Launch Live Circto Engine →",
+    ctaHref: "https://circto-scheduler-igwi-one.vercel.app/",
+    isExternal: true,
+  },
+];
+
 export default function Home() {
   return (
     <div className="bg-linear-to-b from-indigo-50 via-indigo-50/20 to-indigo-100 text-gray-800 min-h-screen font-sans">
@@ -71,85 +104,25 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CASE STUDY SECTION - ASYMMETRIC TWO COLUMN GRID */}
-        <section id="projects" className="py-16 border-t border-gray-300">
-          <div className="max-w-6xl mx-auto">
-            <span className="text-xs font-bold uppercase text-indigo-600 tracking-widest block text-center md:text-left mb-2">
-              Featured Case Study
-            </span>
-            <h2 className="text-3xl font-extrabold text-slate-900 text-center md:text-left mb-12">
-              Multi-Tenant Scheduler & Data Pipeline
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-              
-              {/* Column 1: Technical Narrative Details (Spans 5 Columns) */}
-              <div className="md:col-span-5 space-y-6">
-                <div>
-                  <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider">The Problem</h4>
-                  <p className="text-sm text-gray-600 mt-1.5 leading-relaxed">
-                    Enterprise platforms require strict multi-tenant boundary checks. Different stakeholders (e.g., Underwriters vs. Realtors) must see scoped variants of user data matrices without bleeding state or introducing configuration tracking vulnerabilities.
-                  </p>
-                </div>
+        {/* PROJECTS / CASE STUDY SECTION */}
+        {/* Featured Projects Section */}
+      <section id="projects" className="max-w-6xl mx-auto py-16 border-t border-gray-200">
+        <div className="mb-12 text-center md:text-left">
+          <span className="text-xs font-bold uppercase text-indigo-600 tracking-widest block mb-2">
+            Featured Case Study & Ecosystem
+          </span>
+          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+            Multi-Tenant Scheduler & Data Pipeline
+          </h2>
+        </div>
 
-                <div>
-                  <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider">The QA & Testing Solution</h4>
-                  <p className="text-sm text-gray-600 mt-1.5 leading-relaxed">
-                    Designed an interactive sandbox proving out complex Role-Based Access Control (RBAC). Built with custom validation filters, explicit clearance tier structures, and state management rules to verify workflows remain bulletproof under load.
-                  </p>
-                </div>
-
-                <div className="pt-2">
-                  <h4 className="text-xs font-bold uppercase text-slate-400 tracking-wider mb-2">Technical Core Stack</h4>
-                  <div className="flex flex-wrap gap-1.5 text-xs font-semibold">
-                    <span className="px-3 py-1 bg-indigo-50 border border-indigo-200 text-indigo-700 rounded-md">Next.js 15 (App Router)</span>
-                    <span className="px-3 py-1 bg-purple-50 border border-purple-200 text-purple-700 rounded-md">TypeScript Structs</span>
-                    <span className="px-3 py-1 bg-slate-50 border border-slate-200 text-slate-700 rounded-md">Tailwind CSS v4</span>
-                    <span className="px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-md">HTML5 DnD API</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Column 2: Dashboard Preview & Trigger Link (Spans 7 Columns) */}
-              <div className="md:col-span-7 bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-6 text-slate-200 self-stretch flex flex-col justify-between">
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 rounded-full bg-red-500" />
-                      <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                      <div className="w-3 h-3 rounded-full bg-green-500" />
-                    </div>
-                    <span className="text-xs font-mono text-slate-500">Live Sandbox Preview Panel</span>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-white">Scheduler App Dashboard</h3>
-                    <p className="text-xs text-slate-400 leading-relaxed">
-                      Experience the live interface mockups. Switch permissions profiles from standard Loan Officer down to Risk Agents dynamically to test system validation loops instantly.
-                    </p>
-                  </div>
-
-                  {/* Micro Interface Preview Visual Aid */}
-                  <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl space-y-2 font-mono text-[10px]">
-                    <div className="flex justify-between text-slate-500 border-b border-slate-800 pb-1">
-                      <span>STAGES IN WORKFLOW</span>
-                      <span>LEADS ROUTED</span>
-                    </div>
-                    <div className="flex items-center justify-between text-emerald-400">
-                      <span>[Lead] → [App Check] → [Underwriting]</span>
-                      <span className="bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">Active Validation Passing</span>
-                    </div>
-                  </div>
-                </div>
-
-                <Link href="/scheduler-dashboard" className="w-full mt-4 block py-3.5 px-6 bg-white hover:bg-slate-100 text-slate-950 text-center font-bold text-sm rounded-xl tracking-wide uppercase transition-all shadow-lg hover:shadow-xl">
-                  Launch Demo UI Component Sandbox →
-                </Link>
-              </div>
-
-            </div>
-          </div>
-        </section>
+        {/* Dynamic Project Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          {PROJECTS.map((project) => (
+            <ProjectCard key={project.title} {...project} />
+          ))}
+        </div>
+      </section>
 
         {/* Contact Section */}
         <section id="contact" className="py-16 border-t border-gray-300">
