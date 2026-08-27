@@ -37,14 +37,8 @@ export default function ResumePage() {
             <div className="text-sm font-semibold text-[#0284c7] mb-1">Full-Stack Software Engineer</div>
             <div className="text-xs text-[#475569]">
               San Antonio, TX &bull;{' '}
-                    freecodecamp.org/tracychacon
-                    freecodecamp.org/tracychacon
               <a href="https://tracychacon.github.io" className="text-[#0284c7] hover:underline font-medium" target="_blank" >tracychacon.github.io</a> &bull;{' '}
-                    freecodecamp.org/tracychacon
-                    freecodecamp.org/tracychacon
               <a href="https://github.com/tracychacon" className="text-[#0284c7] hover:underline font-medium" target="_blank" >github.com/tracychacon</a> &bull;{' '}
-                    freecodecamp.org/tracychacon
-                    freecodecamp.org/tracychacon
               <a href="https://www.linkedin.com/in/tracy-chacon-862a5699/" className="text-[#0284c7] hover:underline font-medium" target="_blank" >linkedin.com/in/tracychacon</a>
             </div>
           </div>
