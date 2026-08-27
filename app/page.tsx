@@ -63,6 +63,9 @@ export default function Home() {
             <Link href="#contact" className="text-gray-600 hover:text-indigo-600 transition-colors font-medium hidden sm:block">
               Contact
             </Link>
+            <Link href="/resume" className="text-slate-700 hover:text-blue-900 font-medium transition-colors">
+              Resume
+            </Link>
             <Link href="#contact" className="px-5 py-2 text-sm bg-indigo-600 text-white rounded-full font-semibold shadow-md hover:bg-indigo-700 transition-colors">
               Get in Touch
             </Link>
