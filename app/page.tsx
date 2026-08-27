@@ -50,23 +50,26 @@ export default function Home() {
       {/* Header & Navigation */}
       <header className="sticky top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-xs">
         <nav className="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-          <Link href="#about" className="text-2xl font-bold text-indigo-600 hover:text-indigo-800 transition-colors">
+          <Link href="#about" className="text-xl sm:text-2xl font-bold text-indigo-600 hover:text-indigo-800 transition-colors">
             Tracy Chacon
           </Link>
-          <div className="flex items-center space-x-6">
-            <Link href="#projects" className="text-gray-600 hover:text-indigo-600 transition-colors font-medium hidden sm:block">
+          
+          {/* Navigation Links */}
+          <div className="flex items-center space-x-3 sm:space-x-6">
+            <Link href="#projects" className="text-gray-600 hover:text-indigo-600 transition-colors font-medium hidden md:block">
               Projects
             </Link>
-            <Link href="/blog" className="text-gray-600 hover:text-indigo-600 transition-colors font-medium hidden sm:block">
+            <Link href="/blog" className="text-gray-600 hover:text-indigo-600 transition-colors font-medium hidden md:block">
               Blog
             </Link>
             <Link href="#contact" className="text-gray-600 hover:text-indigo-600 transition-colors font-medium hidden sm:block">
               Contact
             </Link>
-            <Link href="/resume" className="text-slate-700 hover:text-blue-900 font-medium transition-colors">
+            <Link href="/resume" className="text-indigo-600 hover:text-indigo-800 font-semibold transition-colors text-sm sm:text-base px-2 py-1 bg-indigo-50 rounded-md">
               Resume
             </Link>
-            <Link href="#contact" className="px-5 py-2 text-sm bg-indigo-600 text-white rounded-full font-semibold shadow-md hover:bg-indigo-700 transition-colors">
+            
+            <Link href="#contact" className="px-3 sm:px-5 py-2 text-xs sm:text-sm bg-indigo-600 text-white rounded-full font-semibold shadow-md hover:bg-indigo-700 transition-colors shrink-0">
               Get in Touch
             </Link>
           </div>
@@ -96,9 +99,12 @@ export default function Home() {
             <p className="mt-4 sm:mt-6 text-base sm:text-lg text-gray-600 max-w-lg mx-auto md:mx-0">
               Hello, I&apos;m Tracy, a developer specializing in Full Stack development and Quality Assurance. I bridge the gap between writing clean, scalable application logic and executing rigorous testing strategies to deliver bulletproof user experiences.
             </p>
-            <div className="mt-6 sm:mt-8 flex justify-center md:justify-start space-x-4">
+            <div className="mt-6 sm:mt-8 flex flex-wrap justify-center md:justify-start gap-3 sm:space-x-4">
               <Link href="#projects" className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-md hover:bg-indigo-700 transition-colors">
                 View Projects
+              </Link>
+              <Link href="/resume" className="px-6 py-3 border border-indigo-600 text-indigo-600 font-semibold rounded-full hover:bg-indigo-50 transition-colors">
+                View Resume
               </Link>
               <Link href="#contact" className="px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-full hover:bg-gray-600 transition-colors hover:text-white">
                 Contact Me
@@ -108,24 +114,23 @@ export default function Home() {
         </section>
 
         {/* PROJECTS / CASE STUDY SECTION */}
-        {/* Featured Projects Section */}
-      <section id="projects" className="max-w-6xl mx-auto py-16 border-t border-gray-200">
-        <div className="mb-12 text-center md:text-left">
-          <span className="text-xs font-bold uppercase text-indigo-600 tracking-widest block mb-2">
-            Featured Case Study & Ecosystem
-          </span>
-          <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-            Multi-Tenant Scheduler & Data Pipeline
-          </h2>
-        </div>
+        <section id="projects" className="max-w-6xl mx-auto py-16 border-t border-gray-200">
+          <div className="mb-12 text-center md:text-left">
+            <span className="text-xs font-bold uppercase text-indigo-600 tracking-widest block mb-2">
+              Featured Case Study & Ecosystem
+            </span>
+            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
+              Multi-Tenant Scheduler & Data Pipeline
+            </h2>
+          </div>
 
-        {/* Dynamic Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-          {PROJECTS.map((project) => (
-            <ProjectCard key={project.title} {...project} />
-          ))}
-        </div>
-      </section>
+          {/* Dynamic Project Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            {PROJECTS.map((project) => (
+              <ProjectCard key={project.title} {...project} />
+            ))}
+          </div>
+        </section>
 
         {/* Contact Section */}
         <section id="contact" className="py-16 border-t border-gray-300">
