@@ -30,7 +30,7 @@ export default function ResumePage() {
 
         {/* Header Layout */}
         <header className="flex items-center justify-between gap-5 border-b-[2.5px] border-[#1e3a8a] pb-3 mb-4">
-          <div className="flex-grow text-left">
+          <div className="grow text-left">
             <Link href="https://tracychacon.github.io" className="no-underline">
               <h1 className="text-2xl font-extrabold tracking-wide text-[#1e3a8a] mb-0.5">TRACY CHACON</h1>
             </Link>
@@ -39,7 +39,7 @@ export default function ResumePage() {
               San Antonio, TX &bull;{' '}
               <a href="https://tracychacon.github.io" className="text-[#0284c7] hover:underline font-medium">tracychacon.github.io</a> &bull;{' '}
               <a href="https://github.com/tracychacon" className="text-[#0284c7] hover:underline font-medium">github.com/tracychacon</a> &bull;{' '}
-              <a href="https://linkedin.com/in/tracychacon" className="text-[#0284c7] hover:underline font-medium">linkedin.com/in/tracychacon</a>
+              <a href="https://www.linkedin.com/in/tracy-chacon-862a5699/" className="text-[#0284c7] hover:underline font-medium">linkedin.com/in/tracychacon</a>
             </div>
           </div>
           <div className="flex-shrink-0 w-[75px] h-[75px] rounded-full border-[3px] border-[#1e3a8a] overflow-hidden bg-[#f1f5f9] relative flex items-center justify-center">
